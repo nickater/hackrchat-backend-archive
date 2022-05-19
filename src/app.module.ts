@@ -5,6 +5,7 @@ import { typeOrmConfig } from './typeorm.config';
 import { UserModule } from './user/user.module';
 import { ChatModule } from './chat/chat.module';
 import { MessageModule } from './message/message.module';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { MessageModule } from './message/message.module';
     UserModule,
     ChatModule,
     MessageModule,
+    AuthModule,
   ],
 })
 export class AppModule {}

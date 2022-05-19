@@ -20,7 +20,7 @@ export class ChatService {
     const newChatWithId = await this.chatRepository.save(newChat);
     newChatWithId.users = [];
     for (const username of createChatDto.usernames) {
-      const user = await this.userService.findOne(username);
+      const user = await this.userService.findOneByUsername(username);
       newChatWithId.users.push(user);
     }
     return this.chatRepository.save(newChatWithId);
@@ -43,7 +43,7 @@ export class ChatService {
   async update(chatId: string, updateChatDto: UpdateChatDto) {
     const chat = await this.findOne(chatId);
     for (const username of updateChatDto.usernames) {
-      const user = await this.userService.findOne(username);
+      const user = await this.userService.findOneByUsername(username);
       chat.users.push(user);
     }
     return this.chatRepository.update(chatId, chat);
